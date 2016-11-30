@@ -1,0 +1,6 @@
+// Package gotest ...
+//
+//
+//
+//
+package gotest

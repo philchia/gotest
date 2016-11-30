@@ -1,0 +1,22 @@
+language: go
+
+sudo: false
+
+go:
+  - 1.7.3
+  - master
+
+env:
+  - GOARCH=amd64
+  - GOARCH=386
+
+install:
+  - go get -u github.com/mattn/goveralls
+
+script:
+  - GOMAXPROCS=1 go test -timeout 30s ./...
+  - GOMAXPROCS=4 go test -timeout 30s -race ./...
+  - $HOME/gopath/bin/goveralls -service=travis-ci -repotoken $COVERALLS_TOKEN
+
+notifications:
+  email: false
