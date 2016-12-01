@@ -17,67 +17,77 @@ func Fail(t Ter, msg ...string) {
 	}
 }
 
-// Equal will compare obj1 and obj2, and will fail if obj1 != obj2
+// Equal will compare obj1 and obj2, and will fail if obj1 != obj2 or obj1 has different type with obj2
 func Equal(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !reflect.DeepEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
+// NotEqual will compare obj1 and obj2, and will fail if obj1 == obj2
 func NotEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if reflect.DeepEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
+// Nil will compare obj1 and nil, and will fail if obj1 != nil
 func Nil(t Ter, obj1 interface{}, msg ...string) {
 	if obj1 != nil {
 		Fail(t, msg...)
 	}
 }
 
+// NotNil will compare obj1 and nil, and will fail if obj1 == nil
 func NotNil(t Ter, obj1 interface{}, msg ...string) {
 	if obj1 == nil {
 		Fail(t, msg...)
 	}
 }
 
+// LessThan will compare obj1 and obj2, and will fail if obj1 >= obj2 or obj1 has different type with obj2
 func LessThan(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !lessThan(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
+// LessThanOrEqual will compare obj1 and obj2, and will fail if obj1 > obj2 or obj1 has different type with obj2
 func LessThanOrEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !lessThanOrEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
+// GreaterThan will compare obj1 and obj2, and will fail if obj1 <= obj2 or obj1 has different type with obj2
 func GreaterThan(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !greaterThan(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
+// GreaterThanOrEqual will compare obj1 and obj2, and will fail if obj1 < obj2 or obj1 has different type with obj2
 func GreaterThanOrEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !greaterThanOrEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
+// True wil fail if obj1 is not true
 func True(t Ter, obj1 bool, msg ...string) {
 	if !obj1 {
 		Fail(t, msg...)
 	}
 }
 
+// False wil fail if obj1 is true
 func False(t Ter, obj1 bool, msg ...string) {
 	if obj1 {
 		Fail(t, msg...)
 	}
 }
 
+// lessThan will compare obj1 and obj2, and will return false if obj1 >= obj2 or obj1 has different type with obj2
 func lessThan(obj1, obj2 interface{}) bool {
 	t1 := reflect.TypeOf(obj1)
 	t2 := reflect.TypeOf(obj2)
@@ -104,6 +114,7 @@ func lessThan(obj1, obj2 interface{}) bool {
 	return false
 }
 
+// lessThanOrEqual will compare obj1 and obj2, and will return false if obj1 > obj2 or obj1 has different type with obj2
 func lessThanOrEqual(obj1, obj2 interface{}) bool {
 	t1 := reflect.TypeOf(obj1)
 	t2 := reflect.TypeOf(obj2)
@@ -130,6 +141,7 @@ func lessThanOrEqual(obj1, obj2 interface{}) bool {
 	return false
 }
 
+// greaterThan will compare obj1 and obj2, and will return false if obj1 <= obj2 or obj1 has different type with obj2
 func greaterThan(obj1, obj2 interface{}) bool {
 	t1 := reflect.TypeOf(obj1)
 	t2 := reflect.TypeOf(obj2)
@@ -156,6 +168,7 @@ func greaterThan(obj1, obj2 interface{}) bool {
 	return false
 }
 
+// greaterThanOrEqual will compare obj1 and obj2, and will return false if obj1 < obj2 or obj1 has different type with obj2
 func greaterThanOrEqual(obj1, obj2 interface{}) bool {
 	t1 := reflect.TypeOf(obj1)
 	t2 := reflect.TypeOf(obj2)
