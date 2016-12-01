@@ -2,11 +2,13 @@ package assert
 
 import "reflect"
 
+// Ter represent a *testing.T
 type Ter interface {
 	Fail()
 	Errorf(format string, args ...interface{})
 }
 
+// Fail will call t.Fail if msg is empty, else call t.Errorf
 func Fail(t Ter, msg ...string) {
 	if len(msg) > 0 {
 		t.Errorf(msg[0])
@@ -15,61 +17,62 @@ func Fail(t Ter, msg ...string) {
 	}
 }
 
-func AssertEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
+// Equal will compare obj1 and obj2, and will fail if obj1 != obj2
+func Equal(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !reflect.DeepEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
-func AssertNotEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
+func NotEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if reflect.DeepEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
-func AssertNil(t Ter, obj1 interface{}, msg ...string) {
+func Nil(t Ter, obj1 interface{}, msg ...string) {
 	if obj1 != nil {
 		Fail(t, msg...)
 	}
 }
 
-func AssertNotNil(t Ter, obj1 interface{}, msg ...string) {
+func NotNil(t Ter, obj1 interface{}, msg ...string) {
 	if obj1 == nil {
 		Fail(t, msg...)
 	}
 }
 
-func AssertLessThan(t Ter, obj1, obj2 interface{}, msg ...string) {
+func LessThan(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !lessThan(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
-func AssertLessThanOrEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
+func LessThanOrEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !lessThanOrEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
-func AssertGreaterThan(t Ter, obj1, obj2 interface{}, msg ...string) {
+func GreaterThan(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !greaterThan(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
-func AssertGreaterThanOrEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
+func GreaterThanOrEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 	if !greaterThanOrEqual(obj1, obj2) {
 		Fail(t, msg...)
 	}
 }
 
-func AssertTrue(t Ter, obj1 bool, msg ...string) {
+func True(t Ter, obj1 bool, msg ...string) {
 	if !obj1 {
 		Fail(t, msg...)
 	}
 }
 
-func AssertFalse(t Ter, obj1 bool, msg ...string) {
+func False(t Ter, obj1 bool, msg ...string) {
 	if obj1 {
 		Fail(t, msg...)
 	}

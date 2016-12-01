@@ -104,7 +104,7 @@ func TestAssertEqual(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
+			Equal(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -157,7 +157,7 @@ func TestAssertNotEqual(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertNotEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
+			NotEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -206,7 +206,7 @@ func TestAssertNil(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertNil(tt.args.t, tt.args.obj1, tt.args.msg...)
+			Nil(tt.args.t, tt.args.obj1, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -255,7 +255,7 @@ func TestAssertNotNil(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertNotNil(tt.args.t, tt.args.obj1, tt.args.msg...)
+			NotNil(tt.args.t, tt.args.obj1, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -328,7 +328,7 @@ func TestAssertLessThan(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertLessThan(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
+			LessThan(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -391,7 +391,7 @@ func TestAssertLessThanOrEqual(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertLessThanOrEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
+			LessThanOrEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
 		})
 	}
 }
@@ -442,7 +442,7 @@ func TestAssertGreaterThan(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertGreaterThan(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
+			GreaterThan(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -495,7 +495,7 @@ func TestAssertGreaterThanOrEqual(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertGreaterThanOrEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
+			GreaterThanOrEqual(tt.args.t, tt.args.obj1, tt.args.obj2, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
@@ -544,7 +544,7 @@ func TestAssertTrue(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertTrue(tt.args.t, tt.args.obj1, tt.args.msg...)
+			True(tt.args.t, tt.args.obj1, tt.args.msg...)
 		})
 	}
 }
@@ -590,7 +590,7 @@ func TestAssertFalse(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			AssertFalse(tt.args.t, tt.args.obj1, tt.args.msg...)
+			False(tt.args.t, tt.args.obj1, tt.args.msg...)
 			if tt.args.t.(*fakeT).status != tt.want {
 				t.Fail()
 			}
