@@ -203,6 +203,15 @@ func TestAssertNil(t *testing.T) {
 			},
 			empty,
 		},
+		{
+			"case3",
+			args{
+				new(fakeT),
+				2,
+				nil,
+			},
+			fail,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -247,10 +256,10 @@ func TestAssertNotNil(t *testing.T) {
 			"case3",
 			args{
 				new(fakeT),
-				nil,
+				2,
 				nil,
 			},
-			fail,
+			empty,
 		},
 	}
 	for _, tt := range tests {
@@ -1025,6 +1034,46 @@ func Test_greaterThanOrEqual(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := greaterThanOrEqual(tt.args.obj1, tt.args.obj2); got != tt.want {
 				t.Errorf("greaterThanOrEqual() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_isNil(t *testing.T) {
+	type args struct {
+		i interface{}
+	}
+	tests := []struct {
+		name      string
+		args      args
+		wantIsnil bool
+	}{
+		{
+			"case1",
+			args{
+				nil,
+			},
+			true,
+		},
+		{
+			"case2",
+			args{
+				2,
+			},
+			false,
+		},
+		{
+			"case3",
+			args{
+				&struct{}{},
+			},
+			false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if gotIsnil := isNil(tt.args.i); gotIsnil != tt.wantIsnil {
+				t.Errorf("isNil() = %v, want %v", gotIsnil, tt.wantIsnil)
 			}
 		})
 	}

@@ -33,14 +33,14 @@ func NotEqual(t Ter, obj1, obj2 interface{}, msg ...string) {
 
 // Nil will compare obj1 and nil, and will fail if obj1 != nil
 func Nil(t Ter, obj1 interface{}, msg ...string) {
-	if obj1 != nil {
+	if !isNil(obj1) {
 		Fail(t, msg...)
 	}
 }
 
 // NotNil will compare obj1 and nil, and will fail if obj1 == nil
 func NotNil(t Ter, obj1 interface{}, msg ...string) {
-	if obj1 == nil {
+	if isNil(obj1) {
 		Fail(t, msg...)
 	}
 }
@@ -193,4 +193,13 @@ func greaterThanOrEqual(obj1, obj2 interface{}) bool {
 
 	}
 	return false
+}
+
+func isNil(i interface{}) (isnil bool) {
+	defer func() {
+		if r := recover(); r != nil {
+			isnil = false
+		}
+	}()
+	return i == nil || reflect.ValueOf(i).IsNil()
 }
