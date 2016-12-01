@@ -5,7 +5,7 @@ import "testing"
 type testStatus int8
 
 const (
-	empty testStatus = iota
+	ok testStatus = iota
 	fail
 	errorf
 )
@@ -79,7 +79,7 @@ func TestAssertEqual(t *testing.T) {
 				1,
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case2",
@@ -142,7 +142,7 @@ func TestAssertNotEqual(t *testing.T) {
 				1,
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case3",
@@ -201,7 +201,7 @@ func TestAssertNil(t *testing.T) {
 				nil,
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case3",
@@ -241,7 +241,7 @@ func TestAssertNotNil(t *testing.T) {
 				&struct{}{},
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case2",
@@ -259,7 +259,7 @@ func TestAssertNotNil(t *testing.T) {
 				2,
 				nil,
 			},
-			empty,
+			ok,
 		},
 	}
 	for _, tt := range tests {
@@ -322,7 +322,7 @@ func TestAssertLessThan(t *testing.T) {
 				2,
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case5",
@@ -365,7 +365,7 @@ func TestAssertLessThanOrEqual(t *testing.T) {
 				nil,
 				[]string{"fail"},
 			},
-			empty,
+			ok,
 		},
 		{
 			"case2",
@@ -445,7 +445,7 @@ func TestAssertGreaterThan(t *testing.T) {
 				2,
 				[]string{"fail"},
 			},
-			empty,
+			ok,
 		},
 	}
 
@@ -499,7 +499,7 @@ func TestAssertGreaterThanOrEqual(t *testing.T) {
 				2,
 				[]string{"fail"},
 			},
-			empty,
+			ok,
 		},
 	}
 	for _, tt := range tests {
@@ -539,7 +539,7 @@ func TestAssertTrue(t *testing.T) {
 				true,
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case3",
@@ -576,7 +576,7 @@ func TestAssertFalse(t *testing.T) {
 				false,
 				nil,
 			},
-			empty,
+			ok,
 		},
 		{
 			"case2",
