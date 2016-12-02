@@ -1,4 +1,4 @@
-# gotest is a Go library for test
+# gotest is a collection of library for test in Go
 
 [![Golang](https://img.shields.io/badge/language-Go-brightgreen.svg?style=flat)](https://golang.org)
 [![Build Status](https://travis-ci.org/philchia/gotest.svg?branch=master)](https://travis-ci.org/philchia/gotest)
