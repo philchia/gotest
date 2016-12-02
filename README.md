@@ -123,6 +123,17 @@ func TestFalse(t *testing.T) {
 
 ### bench
 
+```go
+import "github.com/philchia/gotest/bench"
+
+func BenchFunc(b *testing.B) {
+    bench.Benchmark(b, func(){
+        log.Println("benchmark")
+    })
+}
+
+```
+
 ### mock
 
 ## Todo
