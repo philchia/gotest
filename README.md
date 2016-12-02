@@ -138,6 +138,10 @@ func BenchFunc(b *testing.B) {
 
 ## Todo
 
+* implement http mock
+* implement sql mock
+* implement io.Reader io.Writer mock
+
 ## License
 
 gotest code published under MIT license
