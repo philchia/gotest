@@ -136,7 +136,7 @@ func BenchFunc(b *testing.B) {
 
 ### mock
 
-currently under development
+Currently under development
 
 ## Todo
 
